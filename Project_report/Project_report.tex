@@ -1,0 +1,2281 @@
+
+
+\documentclass[12pt,a4paper]{report}
+
+% Required Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{ragged2e}
+% Page Formatting
+\geometry{
+    left=1.25in,
+    right=1in,
+    top=1in,
+    bottom=1in
+}
+\onehalfspacing
+
+\begin{document}
+
+% =====================================
+% TITLE PAGE
+% =====================================
+
+
+% =====================================
+% TITLE PAGE
+% =====================================
+
+\begin{titlepage}
+    \centering
+
+    \vspace*{0.5cm}
+
+    % College Logo
+    % Uncomment after uploading college_logo.png
+    % \includegraphics[width=3.5cm]{college_logo.png}
+
+    \vspace{0.8cm}
+
+    {\fontsize{20}{24}\selectfont
+    \textbf{FUNDAMENTALS OF DATA SCIENCE}\par}
+
+    \vspace{1.2cm}
+
+    {\fontsize{34}{40}\selectfont
+    \textbf{SALES INSIGHTS}\par}
+
+    \vspace{0.5cm}
+
+    {\fontsize{18}{23}\selectfont
+    \textit{Data Analysis and Machine Learning}\par}
+
+    \vspace{1.3cm}
+
+    {\fontsize{24}{29}\selectfont
+    \textbf{PROJECT REPORT}\par}
+
+    \vspace{0.7cm}
+
+    {\fontsize{18}{23}\selectfont
+    \textbf{Fundamentals of Data Science}\par}
+
+    \vspace{1.3cm}
+
+    {\fontsize{20}{25}\selectfont
+    \textbf{Submitted By}\par}
+
+    \vspace{0.6cm}
+
+    {\fontsize{16}{22}\selectfont
+    \begin{tabular}{ll}
+        \textbf{Student Name} &
+        \textbf{SAP ID} \\[0.35cm]
+
+        Arnav Rai & 590027562 \\[0.25cm]
+        Ishi Agarwal & 590025685 \\[0.25cm]
+        Vasvi Sood & 590027632
+    \end{tabular}
+    }
+
+    \vfill
+
+    {\fontsize{18}{23}\selectfont
+    \textbf{B.Tech -- Semester III}\par}
+
+    \vspace{0.5cm}
+
+    {\fontsize{17}{22}\selectfont
+    Academic Year: 2026--2027\par}
+
+\end{titlepage}
+
+
+\pagenumbering{roman}
+
+\tableofcontents
+\newpage
+
+\pagenumbering{arabic}
+
+% =====================================
+% 1. INTRODUCTION
+% =====================================
+
+\chapter{Introduction}
+
+\begingroup
+\fontsize{14}{21}\selectfont
+
+The primary purpose of the \textbf{Sales Insights}
+project is to apply the concepts learned in our
+Fundamentals of Data Science course to a sales
+transaction dataset. The dataset consists of
+100 records and 58 attributes, including
+customer information, product details, sales
+amounts, profits, and preprocessed features.
+
+Through this project, we have worked with
+data preprocessing, statistical hypothesis
+testing using the \textbf{Z-test}, and
+dimensionality reduction using
+\textbf{Principal Component Analysis (PCA)}.
+
+Our main objective is to understand the
+practical implementation of these techniques
+and connect the theoretical concepts studied
+in class with their application to a dataset.
+
+\endgroup
+
+\chapter{Problem Statement}
+
+\begingroup
+\fontsize{14}{21}\selectfont
+\justifying
+
+In the modern business environment, organizations generate
+large volumes of sales transaction data through their
+daily operations. This data contains valuable information
+regarding customer purchasing behaviour, product sales,
+regional demand, pricing strategies, discounts, and
+overall business performance. However, raw sales data
+often contains missing values, inconsistencies, duplicate
+records, and variations in data formats, making it
+difficult to extract meaningful and reliable insights
+directly.
+
+The primary problem addressed in this project,
+\textbf{Sales Insights}, is the difficulty of transforming
+raw sales transaction data into structured, meaningful,
+and actionable information that can support effective
+business decision-making. Without systematic data
+analysis, businesses may struggle to identify important
+sales trends, understand customer preferences, evaluate
+the impact of discounts, and determine the factors
+influencing sales performance.
+
+Furthermore, traditional analysis methods may not
+adequately capture complex relationships between
+multiple variables present in sales datasets.
+Factors such as customer age, marketing expenditure,
+discount percentage, customer ratings, and delivery
+duration may influence business outcomes in different
+ways. Therefore, a systematic data science approach
+is required to examine these relationships and
+identify significant patterns.
+
+To address these challenges, this project applies
+\textbf{Data Preprocessing}, \textbf{Exploratory Data
+Analysis (EDA)}, \textbf{Feature Engineering},
+\textbf{Principal Component Analysis (PCA)},
+\textbf{Linear Regression}, and
+\textbf{Statistical Hypothesis Testing}.
+
+Data preprocessing is used to improve data quality
+by handling missing values, duplicate records,
+and other inconsistencies. Exploratory Data Analysis
+helps identify trends, distributions, and relationships
+between different attributes. Feature engineering
+prepares relevant variables for further analysis,
+while Principal Component Analysis assists in
+understanding the underlying structure of
+multidimensional data.
+
+Linear Regression is employed to investigate
+relationships between selected independent
+variables and a continuous target variable.
+Statistical hypothesis testing provides a
+systematic framework for evaluating assumptions
+and determining whether observed differences
+are statistically significant.
+
+The overall aim of the project is to develop
+a structured analytical approach that converts
+sales transaction data into useful business
+insights, supports evidence-based decision-making,
+and demonstrates the practical application of
+fundamental data science techniques.
+
+\endgroup
+
+
+\chapter{Project Objectives}
+
+\begingroup
+\fontsize{14}{21}\selectfont
+
+The primary objective of the \textbf{Sales Insights}
+project is to analyse sales transaction data using
+statistical methods, data visualization, and machine
+learning techniques to identify meaningful patterns,
+understand customer purchasing behaviour, and
+support data-driven business decision-making.
+
+The specific objectives of this project are as follows:
+
+\begin{enumerate}
+
+    \item \textbf{Product Category Analysis:}
+    To identify which product categories generate
+    the highest revenue and evaluate their
+    contribution to overall sales performance.
+
+    \item \textbf{Regional Sales Analysis:}
+    To determine which geographical regions
+    contribute the most to total sales and
+    compare sales performance across different
+    locations.
+
+    \item \textbf{Customer Behaviour Analysis:}
+    To examine how customer characteristics,
+    including age, customer type, and purchasing
+    preferences, influence buying behaviour
+    and sales patterns.
+
+    \item \textbf{Discount and Profitability Analysis:}
+    To investigate the relationship between
+    discount percentages, sales revenue, and
+    business profitability.
+
+    \item \textbf{Identification of Sales Factors:}
+    To identify the important factors associated
+    with higher sales, including marketing
+    expenditure, discounts, and customer-related
+    attributes.
+
+    \item \textbf{Sales Prediction Using Linear Regression:}
+    To develop a Linear Regression model for
+    predicting sales using relevant independent
+    variables and evaluate its predictive
+    performance.
+
+    \item \textbf{Dimensionality Reduction Using PCA:}
+    To apply Principal Component Analysis (PCA)
+    to reduce dataset dimensionality while
+    retaining a substantial proportion of
+    the original variance.
+
+    \item \textbf{Statistical Hypothesis Testing:}
+    To determine whether statistically significant
+    differences in sales exist between selected
+    customer segments using an appropriate
+    statistical hypothesis test.
+
+\end{enumerate}
+
+Through these objectives, the project aims to
+demonstrate the practical application of
+Fundamentals of Data Science concepts in
+transforming raw sales data into meaningful
+business insights.
+
+\endgroup
+
+
+% =====================================
+% CHAPTER 4: DATASET DESCRIPTION
+% =====================================
+
+\chapter{Dataset Description}
+
+\begingroup
+\fontsize{14}{21}\selectfont
+
+The \textbf{Sales Insights Dataset} is a structured
+dataset containing synthetically generated sales
+transaction records. It is used for practising
+data preprocessing, statistical analysis, and
+dimensionality reduction techniques.
+
+The original dataset contains 100 transactions
+and 21 attributes. After preprocessing and
+feature engineering, the dataset contains
+100 records and 58 columns.
+
+% =====================================
+% 4.1 DATASET SOURCE
+% =====================================
+
+\section{Dataset Source}
+
+The dataset consists of synthetic sales
+transaction data prepared for educational
+and analytical purposes. It does not contain
+actual business transactions.
+
+The transactions cover the period from
+\textbf{16 January 2025 to 23 December 2025}
+and represent sales across 12 cities
+belonging to four geographical regions
+of India: North, South, East, and West.
+
+The dataset contains information related
+to customers, products, transaction values,
+discounts, marketing expenditure, and profit.
+Monetary values are represented in
+Indian Rupees (INR).
+
+Since the data is artificially generated,
+the findings obtained from the analysis
+are applicable to the given dataset and
+should not be generalized to real businesses.
+
+% =====================================
+% 4.2 DATASET ATTRIBUTES
+% =====================================
+
+\section{Dataset Attributes}
+
+The original dataset consists of
+\textbf{100 rows and 21 columns},
+representing 2,100 data cells.
+
+Each row represents a sales transaction
+identified by a unique
+\texttt{Transaction\_ID}.
+The dataset contains 50 distinct
+customer identifiers, indicating that
+some customers appear in multiple transactions.
+
+The attributes provide information
+about customers, products, sales,
+and transaction-related activities.
+
+The important attributes include:
+
+\begin{itemize}
+
+    \item \textbf{Transaction\_ID:}
+    Unique identifier assigned to each
+    sales transaction.
+
+    \item \textbf{Date:}
+    Date on which the transaction occurred.
+
+    \item \textbf{Customer\_ID and Customer\_Name:}
+    Attributes used to identify customers.
+
+    \item \textbf{Customer\_Age and Customer\_Type:}
+    Customer-related information, including
+    age and customer classification.
+
+    \item \textbf{City and Region:}
+    Geographical information associated
+    with each transaction.
+
+    \item \textbf{Product\_ID and Product\_Category:}
+    Information identifying the product
+    and its category.
+
+    \item \textbf{Unit\_Price and Quantity:}
+    Selling price per unit and the
+    quantity purchased.
+
+    \item \textbf{Discount\_Percent:}
+    Percentage discount applied
+    to the transaction.
+
+    \item \textbf{Cost\_Per\_Unit:}
+    Cost associated with one unit
+    of the product.
+
+    \item \textbf{Marketing\_Spend:}
+    Marketing expenditure associated
+    with the transaction.
+
+    \item \textbf{Customer\_Rating:}
+    Rating recorded for the transaction.
+
+    \item \textbf{Payment\_Method:}
+    Method used to complete the payment.
+
+    \item \textbf{Delivery\_Days:}
+    Number of days required for delivery.
+
+    \item \textbf{Returned:}
+    Indicates whether the product
+    was returned.
+
+    \item \textbf{Sales\_Amount:}
+    Total transaction sales value
+    after applying the discount.
+
+    \item \textbf{Profit:}
+    Amount remaining after accounting
+    for product costs and marketing
+    expenditure.
+
+\end{itemize}
+
+The original dataset contained reported
+data-quality issues, including missing
+values and extreme numerical observations.
+
+After preprocessing and feature engineering,
+the dataset was expanded to
+\textbf{58 columns}, including
+29 one-hot encoded features and
+8 scaled numerical features.
+
+The processed dataset contains
+no missing values or duplicate rows.
+
+% =====================================
+% 4.3 DATA TYPES
+% =====================================
+
+\section{Data Types}
+
+The original dataset contains three
+main categories of variables:
+\textbf{numerical, categorical, and date}.
+
+\textbf{1. Numerical Variables}
+
+Numerical variables represent measurable
+quantities and can be used in mathematical
+and statistical calculations.
+
+The dataset contains 10 numerical attributes:
+
+\begin{itemize}
+    \item Customer\_Age
+    \item Unit\_Price
+    \item Quantity
+    \item Discount\_Percent
+    \item Cost\_Per\_Unit
+    \item Marketing\_Spend
+    \item Customer\_Rating
+    \item Delivery\_Days
+    \item Sales\_Amount
+    \item Profit
+\end{itemize}
+
+These variables are used for statistical
+calculations, data analysis, and
+dimensionality reduction.
+
+\textbf{2. Categorical Variables}
+
+Categorical variables represent labels,
+identifiers, or classifications rather
+than continuous numerical measurements.
+
+The original dataset contains
+10 categorical or identifier attributes:
+
+\begin{itemize}
+    \item Transaction\_ID
+    \item Customer\_ID
+    \item Customer\_Name
+    \item Customer\_Type
+    \item City
+    \item Region
+    \item Product\_ID
+    \item Product\_Category
+    \item Payment\_Method
+    \item Returned
+\end{itemize}
+
+The \texttt{Returned} attribute is a
+binary categorical variable represented
+using numerical values.
+
+Some categorical attributes were converted
+into numerical representations using
+one-hot encoding during feature engineering.
+
+\textbf{3. Date Variable}
+
+The \texttt{Date} attribute represents
+the date associated with each transaction.
+
+In the uploaded CSV file, this attribute
+is stored as text. It can be converted
+into a datetime data type for
+date-based analysis.
+
+\textbf{4. Engineered Features}
+
+The processed dataset also contains
+additional numerical features created
+during preprocessing.
+
+These include one-hot encoded columns
+representing categorical values and
+scaled columns representing standardized
+numerical attributes.
+
+The scaled features include customer age,
+unit price, quantity, discount percentage,
+cost per unit, marketing expenditure,
+customer rating, and delivery duration.
+
+These transformations prepare the dataset
+for numerical analysis and techniques
+such as Principal Component Analysis (PCA).
+
+\endgroup
+
+% =====================================
+% 5. DATA PREPROCESSING
+% =====================================
+
+
+% =====================================
+% CHAPTER 5: DATA PREPROCESSING
+% =====================================
+
+\chapter{Data Preprocessing}
+
+\begingroup
+\fontsize{16}{23}\selectfont
+
+Data preprocessing is an important stage of
+Data Science that involves identifying and
+handling data-quality issues before applying
+statistical and analytical techniques.
+
+In the \textbf{Sales Insights} project,
+preprocessing was performed to improve
+the consistency and usability of the dataset.
+
+The original dataset contained
+\textbf{100 records and 21 attributes}.
+During the initial data-quality assessment,
+26 missing values were reported across
+8 columns, affecting 22 records.
+
+The preprocessing workflow involved examining
+missing values, checking duplicate records,
+identifying outliers, converting data types,
+encoding categorical variables, and
+standardizing numerical features.
+
+% =====================================
+% 5.1 MISSING VALUES
+% =====================================
+
+\section{Missing Values}
+
+Missing values occur when certain observations
+in a dataset do not contain recorded information.
+These values can affect statistical calculations
+and the performance of analytical algorithms.
+
+In the original Sales Insights dataset,
+missing values were reported in the
+following attributes:
+
+\begin{itemize}
+
+    \item \texttt{Customer\_Age}
+    \item \texttt{Customer\_Type}
+    \item \texttt{City}
+    \item \texttt{Discount\_Percent}
+    \item \texttt{Marketing\_Spend}
+    \item \texttt{Customer\_Rating}
+    \item \texttt{Payment\_Method}
+    \item \texttt{Delivery\_Days}
+
+\end{itemize}
+
+Missing numerical values can be handled
+using statistical measures such as the
+mean or median. The median is particularly
+useful when the data contains extreme
+observations because it is less affected
+by outliers.
+
+For categorical variables, mode imputation
+can be used to replace missing values with
+the most frequently occurring category.
+
+In some cases, missing values may also
+be estimated using known mathematical
+relationships between existing attributes,
+provided that these relationships are valid.
+
+The processed dataset was checked for
+remaining missing values using the
+\texttt{isnull()} function in Pandas.
+
+The final uploaded dataset contains
+\textbf{zero missing values}.
+
+% =====================================
+% 5.2 DUPLICATE VALUES
+% =====================================
+
+\section{Duplicate Values}
+
+Duplicate records occur when identical
+observations appear more than once in
+a dataset. Such records may affect
+statistical summaries and introduce
+unnecessary repetition into the analysis.
+
+The Sales Insights dataset was examined
+for duplicate rows using the
+\texttt{duplicated()} function provided
+by the Pandas library.
+
+The dataset was also checked for
+repeated transaction identifiers,
+since each transaction should have
+a unique \texttt{Transaction\_ID}.
+
+No duplicate transactions were reported
+in the original dataset.
+
+The final processed dataset contains
+\textbf{100 records with no duplicate rows}.
+
+Therefore, no reduction in the number
+of records was required due to
+duplicate removal.
+
+% =====================================
+% 5.3 OUTLIER DETECTION
+% =====================================
+
+\section{Outlier Detection}
+
+
+\begingroup
+\fontsize{14}{21}\selectfont
+
+In this project, the
+\textbf{Interquartile Range (IQR) method}
+was implemented to detect potential
+outliers in the numerical attributes
+of the dataset.
+
+The first quartile ($Q_1$) and third
+quartile ($Q_3$) were calculated for
+the numerical variables, and the
+Interquartile Range was determined
+using their difference.
+
+The lower and upper bounds were
+then calculated using the
+1.5 IQR rule. Observations falling
+outside these bounds were identified
+as potential outliers.
+
+This method helped us identify
+extreme numerical observations
+and examine their distribution
+within the dataset.
+
+\endgroup
+
+\chapter{Exploratory Data Analysis}
+
+\begingroup
+\fontsize{14}{21}\selectfont
+
+Exploratory Data Analysis (EDA) is the process
+of examining a dataset to understand its
+characteristics, distributions, and relationships
+between different variables.
+
+In the \textbf{Sales Insights} project,
+EDA was performed to examine the numerical
+attributes of the dataset and understand
+the distribution of sales transactions.
+
+Descriptive statistics were calculated
+using the \texttt{describe()} function
+from the Pandas library. This provided
+information such as the count, mean,
+standard deviation, minimum, maximum,
+and quartile values of numerical features.
+
+Visualization techniques were also used
+to represent the data graphically and
+identify patterns that may not be
+immediately visible from numerical values.
+
+% =====================================
+% VISUALIZATIONS
+% =====================================
+
+\section{Visualizations}
+
+Data visualization is an important part
+of Exploratory Data Analysis because
+it helps represent numerical information
+in a graphical format.
+
+In this project, three visualization
+techniques were used:
+\textbf{Box Plot, Histogram, and
+Correlation Heat Map}.
+
+% =====================================
+% BOX PLOT
+% =====================================
+
+\subsection{Box Plot}
+
+A box plot is a statistical visualization
+used to represent the distribution
+and spread of numerical data.
+
+It displays the median, first quartile
+($Q_1$), third quartile ($Q_3$),
+and the interquartile range (IQR).
+
+The box represents the middle
+50\% of the observations, while
+the whiskers indicate the range
+of values within the selected
+outlier limits.
+
+In the \textbf{Sales Insights} project,
+a box plot was created for the
+\texttt{Sales\_Amount} attribute.
+
+The visualization was used to examine
+the variation in sales amounts and
+identify potential outliers or
+extreme transaction values.
+
+% =====================================
+% HISTOGRAM
+% =====================================
+
+\subsection{Histogram}
+
+A histogram is a graphical representation
+of the frequency distribution of
+a numerical variable.
+
+It divides numerical observations
+into intervals called bins and
+displays the number of observations
+falling within each interval.
+
+In this project, a histogram was
+created for the \texttt{Sales\_Amount}
+attribute to examine the distribution
+of sales values across transactions.
+
+The histogram helped visualize
+the frequency of different sales
+ranges and observe whether
+transactions were concentrated
+around lower, middle, or
+higher sales amounts.
+
+It also provided a visual
+representation of the overall
+shape and spread of the
+sales distribution.
+
+% =====================================
+% CORRELATION HEAT MAP
+% =====================================
+
+\subsection{Correlation Heat Map}
+
+A correlation heat map is a
+visualization technique used to
+represent the relationships
+between numerical variables.
+
+It displays correlation coefficients
+using different colours and
+colour intensities.
+
+The correlation coefficient
+ranges from $-1$ to $+1$.
+
+\begin{itemize}
+
+    \item \textbf{Positive Correlation:}
+    Indicates that two variables
+    tend to increase together.
+
+    \item \textbf{Negative Correlation:}
+    Indicates that one variable
+    tends to decrease as the
+    other increases.
+
+    \item \textbf{Near-Zero Correlation:}
+    Indicates little or no
+    linear relationship between
+    two variables.
+
+\end{itemize}
+
+In the \textbf{Sales Insights}
+project, a correlation heat map
+was generated using the numerical
+attributes of the dataset.
+
+The visualization was used to
+examine relationships between
+different numerical features
+and identify possible associations
+between the variables.
+
+The heat map provided a
+graphical summary of the
+correlation matrix and helped
+in understanding the relationships
+present in the dataset.
+
+\endgroup
+
+
+% =====================================
+% FEATURE EXTRACTION AND ENGINEERING
+% =====================================
+
+\chapter{Feature Extraction and Feature Engineering}
+
+\begingroup
+\fontsize{14}{21}\selectfont
+
+Feature extraction and feature engineering
+involve creating or transforming variables
+to obtain useful information from an
+existing dataset.
+
+In the \textbf{Sales Insights} project,
+feature engineering was performed to
+derive additional attributes from
+the existing sales transaction data.
+
+Three new features were created:
+\textbf{Average Price Per Item},
+\textbf{Profit Percentage}, and
+\textbf{High Sales}.
+
+% =====================================
+% AVERAGE PRICE PER ITEM
+% =====================================
+
+\section{Average Price Per Item}
+
+The feature \texttt{Avg\_Price\_Per\_Item}
+was created by dividing the total
+\texttt{Sales\_Amount} by the
+\texttt{Quantity} purchased.
+
+The formula used is:
+
+\[
+\text{Avg Price Per Item}
+=
+\frac{\text{Sales Amount}}{\text{Quantity}}
+\]
+
+This feature represents the average
+sales value per unit in each transaction
+after applying the discount.
+
+It provides information about the
+effective selling price of products
+within individual transactions.
+
+% =====================================
+% PROFIT PERCENTAGE
+% =====================================
+
+\section{Profit Percentage}
+
+The feature \texttt{Profit\_Percentage}
+was calculated using the
+\texttt{Profit} and
+\texttt{Sales\_Amount} attributes.
+
+The formula used is:
+
+\[
+\text{Profit Percentage}
+=
+\frac{\text{Profit}}{\text{Sales Amount}}
+\times 100
+\]
+
+This feature represents the profit
+earned as a percentage of the
+total sales amount.
+
+It helps in understanding the
+relative profitability of each
+transaction rather than considering
+only the absolute profit value.
+
+A higher profit percentage indicates
+a greater proportion of profit
+relative to the sales amount.
+
+% =====================================
+% HIGH SALES
+% =====================================
+
+\section{High Sales}
+
+The feature \texttt{High\_Sales}
+was created to classify transactions
+into two categories based on
+their sales amounts.
+
+The median value of
+\texttt{Sales\_Amount} was used
+as the threshold for classification.
+
+The feature was defined as:
+
+\[
+\text{High Sales} =
+\begin{cases}
+1, & \text{if Sales Amount} > \text{Median} \\
+0, & \text{if Sales Amount} \leq \text{Median}
+\end{cases}
+\]
+
+Transactions with sales amounts
+greater than the median were
+assigned a value of
+\textbf{1 (High Sales)}.
+
+Transactions with sales amounts
+less than or equal to the median
+were assigned a value of
+\textbf{0 (Low Sales)}.
+
+This feature provides a binary
+representation of transaction
+sales performance.
+
+% =====================================
+% SUMMARY
+% =====================================
+
+\section{Summary}
+
+The three engineered features
+provide additional information
+about different aspects of
+the sales transactions.
+
+\begin{itemize}
+
+    \item \textbf{Avg\_Price\_Per\_Item:}
+    Represents the average sales
+    value per unit.
+
+    \item \textbf{Profit\_Percentage:}
+    Represents the profit relative
+    to the total sales amount.
+
+    \item \textbf{High\_Sales:}
+    Classifies transactions based
+    on the median sales amount.
+
+\end{itemize}
+
+These features can support
+further statistical analysis
+and machine learning by providing
+additional representations of
+sales value, profitability,
+and transaction performance.
+
+\endgroup
+
+\chapter{Hypothesis Testing}
+
+\begingroup
+\fontsize{14}{21}\selectfont
+
+Hypothesis testing is a statistical method
+used to determine whether an observed
+difference between groups is statistically
+significant.
+
+In the \textbf{Sales Insights} project,
+a Two-Sample Z-Test was performed to
+compare the mean sales amounts of
+Business and Retail customers.
+
+The purpose of this test was to determine
+whether the difference in average sales
+between these two customer groups
+is statistically significant.
+
+% =====================================
+% TWO-SAMPLE Z-TEST
+% =====================================
+
+\section{Two-Sample Z-Test}
+
+The Two-Sample Z-Test is used to compare
+the means of two independent groups
+under suitable statistical assumptions.
+
+In this project, the test was applied
+to the \texttt{Sales\_Amount} variable
+for Business and Retail customers.
+
+% =====================================
+% HYPOTHESES
+% =====================================
+
+\subsection{Hypotheses}
+
+The following hypotheses were formulated:
+
+\begin{itemize}
+
+    \item \textbf{Null Hypothesis ($H_0$):}
+    There is no difference between the
+    population mean sales amounts of
+    Business and Retail customers.
+
+    \item \textbf{Alternative Hypothesis ($H_1$):}
+    There is a difference between the
+    population mean sales amounts of
+    Business and Retail customers.
+
+\end{itemize}
+
+Mathematically,
+
+\[
+H_0: \mu_B = \mu_R
+\]
+
+\[
+H_1: \mu_B \neq \mu_R
+\]
+
+where $\mu_B$ and $\mu_R$ represent
+the population mean sales amounts
+of Business and Retail customers,
+respectively.
+
+A significance level of
+$\alpha = 0.05$ was selected.
+
+% =====================================
+% Z-TEST FORMULA
+% =====================================
+
+\subsection{Z-Test Formula}
+
+The Z-statistic for comparing two
+independent sample means can be
+calculated using:
+
+\[
+Z =
+\frac{\bar{X}_B-\bar{X}_R}
+{\sqrt{
+\frac{\sigma_B^2}{n_B}
++
+\frac{\sigma_R^2}{n_R}
+}}
+\]
+
+where:
+
+\begin{itemize}
+
+    \item $\bar{X}_B$ = Mean sales of
+    Business customers.
+
+    \item $\bar{X}_R$ = Mean sales of
+    Retail customers.
+
+    \item $\sigma_B^2$ = Population
+    variance of Business customer sales.
+
+    \item $\sigma_R^2$ = Population
+    variance of Retail customer sales.
+
+    \item $n_B$ = Number of Business
+    customer observations.
+
+    \item $n_R$ = Number of Retail
+    customer observations.
+
+\end{itemize}
+
+When population variances are unknown,
+sample variances may be used in a
+large-sample Z approximation.
+
+% =====================================
+% TEST RESULTS
+% =====================================
+
+\subsection{Test Results}
+
+The following results were obtained
+from the Two-Sample Z-Test:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.4}
+
+\begin{tabular}{|l|r|}
+\hline
+\textbf{Parameter} & \textbf{Value} \\
+\hline
+Business Customers & 28 \\
+\hline
+Mean Sales (Business) & INR 74,855.66 \\
+\hline
+Retail Customers & 67 \\
+\hline
+Mean Sales (Retail) & INR 37,617.20 \\
+\hline
+Z-Statistic & 2.944 \\
+\hline
+P-Value & 0.00324 \\
+\hline
+Significance Level & 0.05 \\
+\hline
+\end{tabular}
+
+\caption{Two-Sample Z-Test Results}
+\label{tab:ztest_results}
+
+\end{table}
+
+% =====================================
+% INTERPRETATION
+% =====================================
+
+\subsection{Interpretation}
+
+The calculated Z-statistic was
+\textbf{2.944}, with a corresponding
+two-sided p-value of
+\textbf{0.00324}.
+
+The significance level selected
+for the test was
+$\alpha = 0.05$.
+
+Since,
+
+\[
+0.00324 < 0.05
+\]
+
+the p-value is smaller than
+the significance level.
+
+Therefore, the
+\textbf{null hypothesis ($H_0$)
+is rejected}.
+
+This indicates that there is
+a statistically significant
+difference between the mean
+sales amounts of Business and
+Retail customers in the dataset.
+
+The average sales amount for
+Business customers was
+\textbf{INR 74,855.66},
+whereas the average sales amount
+for Retail customers was
+\textbf{INR 37,617.20}.
+
+Thus, Business customers had
+a higher average sales amount
+than Retail customers in
+the observed dataset.
+
+The results suggest that
+customer type is associated
+with differences in average
+transaction sales amounts.
+
+However, statistical significance
+does not establish a causal
+relationship between customer
+type and sales amount.
+
+\endgroup
+
+
+
+% =====================================
+% MACHINE LEARNING IMPLEMENTATION
+% =====================================
+
+\chapter{Machine Learning Implementation}
+
+\begingroup
+\fontsize{14}{21}\selectfont
+
+Machine Learning involves using data
+and statistical algorithms to identify
+patterns and make predictions.
+
+In the \textbf{Sales Insights} project,
+Simple Linear Regression was applied
+to examine the relationship between
+Marketing Spend and Sales Amount.
+
+% =====================================
+% LINEAR REGRESSION
+% =====================================
+
+\section{Linear Regression}
+
+Simple Linear Regression is a supervised
+machine learning technique used to
+predict a continuous dependent variable
+using one independent variable.
+
+In this project, the following
+variables were selected:
+
+\begin{itemize}
+
+    \item \textbf{Independent Variable (X):}
+    Marketing Spend
+
+    \item \textbf{Dependent Variable (Y):}
+    Sales Amount
+
+    \item \textbf{Number of Observations:}
+    100
+
+\end{itemize}
+
+The objective was to examine whether
+Marketing Spend could be used to
+predict the Sales Amount of a transaction.
+
+\medskip
+
+\noindent\textbf{Mathematical Representation}
+
+The equation of Simple Linear
+Regression is:
+
+\[
+\hat{Y} = b_0 + b_1X
+\]
+
+where:
+
+\begin{itemize}
+
+    \item $\hat{Y}$ represents the
+    predicted Sales Amount.
+
+    \item $b_0$ represents the intercept.
+
+    \item $b_1$ represents the slope
+    of the regression line.
+
+    \item $X$ represents Marketing Spend.
+
+\end{itemize}
+
+The slope and intercept were estimated
+using the relationship between
+Marketing Spend and Sales Amount
+in the dataset.
+
+% =====================================
+% REGRESSION RESULTS
+% =====================================
+
+\subsection{Regression Results}
+
+The following results were obtained
+from the regression analysis:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.4}
+
+\begin{tabular}{|l|r|}
+\hline
+\textbf{Parameter} & \textbf{Value} \\
+\hline
+Number of Observations & 100 \\
+\hline
+Mean Marketing Spend & INR 458.02 \\
+\hline
+Mean Sales Amount & INR 56,212.09 \\
+\hline
+Slope ($b_1$) & 28.9598 \\
+\hline
+Intercept ($b_0$) & 42,947.9957 \\
+\hline
+$R^2$ Score & 0.0118 \\
+\hline
+$R^2$ Percentage & 1.18\% \\
+\hline
+\end{tabular}
+
+\caption{Simple Linear Regression Results}
+\label{tab:linear_regression}
+
+\end{table}
+
+The regression equation obtained was:
+
+\[
+\boxed{
+\hat{Y} = 42947.9957 + 28.9598X
+}
+\]
+
+The positive slope indicates that
+an increase of INR 1 in Marketing
+Spend is associated with an increase
+of approximately INR 28.96 in
+predicted Sales Amount according
+to the fitted regression model.
+
+% =====================================
+% MODEL INTERPRETATION
+% =====================================
+
+\subsection{Model Interpretation}
+
+The performance of the regression
+model was evaluated using the
+Coefficient of Determination,
+represented by $R^2$.
+
+The obtained value was:
+
+\[
+R^2 = 0.0118
+\]
+
+Expressed as a percentage:
+
+\[
+R^2 \times 100 = 1.18\%
+\]
+
+This indicates that Marketing Spend
+alone explains approximately
+\textbf{1.18\% of the variation}
+in Sales Amount within the dataset.
+
+The low $R^2$ value indicates
+that the fitted regression model
+has very limited explanatory power.
+
+Although the regression slope
+is positive, the overall linear
+relationship between Marketing
+Spend and Sales Amount is weak.
+
+Other variables, such as product
+price, quantity, discount percentage,
+and customer-related attributes,
+may also help explain differences
+in transaction sales amounts.
+
+A scatter plot with the fitted
+regression line can be used to
+visualize the relationship between
+the two variables.
+
+The weak relationship is reflected
+in the considerable variation of
+observations around the regression
+line.
+
+\subsection{Conclusion}
+
+The Simple Linear Regression analysis
+demonstrated that Marketing Spend
+alone is not a strong linear predictor
+of Sales Amount in the given dataset.
+
+The model explained only 1.18\%
+of the observed variation in sales.
+
+This analysis helped us understand
+the implementation of Linear Regression,
+the interpretation of regression
+coefficients, and the importance
+of evaluating model performance.
+
+\endgroup
+
+
+% =====================================
+% DIMENSIONALITY REDUCTION
+% =====================================
+
+\chapter{Dimensionality Reduction}
+
+\begingroup
+\fontsize{14}{21}\selectfont
+
+Dimensionality reduction is a technique
+used to reduce the number of features
+in a dataset while retaining important
+information.
+
+In the \textbf{Sales Insights} project,
+dimensionality reduction was performed
+using Principal Component Analysis (PCA).
+
+The purpose was to simplify the numerical
+data and represent it in a lower-dimensional
+space for easier visualization and analysis.
+
+% =====================================
+% DIMENSIONALITY REDUCTION TECHNIQUES
+% =====================================
+
+\section{Dimensionality Reduction Techniques}
+
+Dimensionality reduction techniques
+transform high-dimensional data into
+a smaller number of features.
+
+These techniques are useful when
+working with datasets containing
+multiple numerical attributes.
+
+In this project, Principal Component
+Analysis was implemented to reduce
+the selected numerical features
+to two principal components.
+
+% =====================================
+% PRINCIPAL COMPONENT ANALYSIS
+% =====================================
+
+\subsection{Principal Component Analysis (PCA)}
+
+Principal Component Analysis (PCA)
+is an unsupervised dimensionality
+reduction technique that transforms
+the original numerical variables
+into new variables called
+principal components.
+
+These components are linear
+combinations of the original
+features and are arranged
+according to the amount of
+variance they explain.
+
+\medskip
+
+\noindent\textbf{Data Standardization}
+
+Before applying PCA, the following
+10 numerical features were selected:
+
+\begin{itemize}
+
+    \item \texttt{Customer\_Age}
+    \item \texttt{Unit\_Price}
+    \item \texttt{Quantity}
+    \item \texttt{Discount\_Percent}
+    \item \texttt{Cost\_Per\_Unit}
+    \item \texttt{Marketing\_Spend}
+    \item \texttt{Customer\_Rating}
+    \item \texttt{Delivery\_Days}
+    \item \texttt{Sales\_Amount}
+    \item \texttt{Profit}
+
+\end{itemize}
+
+These variables have different
+numerical ranges and measurement
+units. Therefore, standardization
+was performed using
+\textbf{StandardScaler} from
+the Scikit-learn library.
+
+The standardization formula is:
+
+\[
+z = \frac{x-\mu}{\sigma}
+\]
+
+where:
+
+\begin{itemize}
+
+    \item $x$ represents the
+    original feature value.
+
+    \item $\mu$ represents the
+    mean of the feature.
+
+    \item $\sigma$ represents the
+    standard deviation.
+
+    \item $z$ represents the
+    standardized value.
+
+\end{itemize}
+
+Standardization helps prevent
+features with larger numerical
+scales from dominating PCA.
+
+\medskip
+
+\noindent\textbf{PCA Implementation}
+
+After standardization, PCA was
+applied to transform the
+10 selected numerical features
+into two principal components:
+
+\begin{itemize}
+
+    \item \textbf{PC1:}
+    The first principal component,
+    which captures the maximum
+    possible variance in the
+    standardized dataset.
+
+    \item \textbf{PC2:}
+    The second principal component,
+    which captures the maximum
+    remaining variance while being
+    orthogonal to PC1.
+
+\end{itemize}
+
+The transformation reduced the
+numerical feature space from
+10 dimensions to 2 dimensions.
+
+\medskip
+
+\noindent\textbf{PCA Visualization}
+
+A two-dimensional scatter plot
+was created using PC1 and PC2.
+
+Each point on the scatter plot
+represents a sales transaction
+from the dataset.
+
+The plot was used to visualize
+the distribution of transactions
+in the reduced feature space
+and examine possible patterns
+or groupings.
+
+\medskip
+
+\noindent\textbf{Explained Variance Ratio}
+
+The explained variance ratio
+was calculated to determine
+the proportion of total variance
+captured by each principal component.
+
+The formula is:
+
+\[
+EVR_i =
+\frac{\lambda_i}
+{\sum_{j=1}^{p}\lambda_j}
+\]
+
+where:
+
+\begin{itemize}
+
+    \item $\lambda_i$ represents
+    the variance explained by
+    the $i$th principal component.
+
+    \item $p$ represents the
+    total number of original
+    numerical features.
+
+\end{itemize}
+
+The total explained variance
+of the first two components is:
+
+\[
+EVR_{\text{total}} = EVR_1 + EVR_2
+\]
+
+This value represents the
+proportion of total variance
+retained after reducing the
+dataset to two dimensions.
+
+\medskip
+
+\noindent\textbf{Conclusion}
+
+Principal Component Analysis
+was applied to reduce the
+10 selected numerical features
+into two principal components.
+
+The resulting two-dimensional
+representation was visualized
+using a scatter plot.
+
+The explained variance ratio
+was used to assess how much
+variance was retained by
+the selected components.
+
+This implementation helped
+demonstrate the practical
+application of PCA for
+dimensionality reduction
+and data visualization.
+
+\endgroup
+
+% =====================================
+% MODEL EVALUATION
+% =====================================
+
+\chapter{Model Evaluation}
+
+\begingroup
+\fontsize{14}{21}\selectfont
+
+Model evaluation was performed to assess
+the effectiveness of the statistical and
+machine learning techniques applied to
+the \textbf{Sales Insights} dataset.
+
+Different evaluation methods were used
+depending on the type of analysis performed.
+These included regression evaluation,
+explained variance analysis, statistical
+hypothesis testing, and visual examination
+of the results.
+
+% =====================================
+% REGRESSION MODEL EVALUATION
+% =====================================
+
+\section{Regression Model Evaluation}
+
+The Simple Linear Regression model was
+evaluated using the Coefficient of
+Determination ($R^2$), predicted values,
+and residuals.
+
+The model used \texttt{Marketing\_Spend}
+as the independent variable and
+\texttt{Sales\_Amount} as the
+dependent variable.
+
+The Coefficient of Determination
+measures the proportion of variation
+in the dependent variable explained
+by the fitted regression model.
+
+The obtained result was:
+
+\[
+R^2 = 0.0118
+\]
+
+Expressed as a percentage:
+
+\[
+R^2 \times 100 = 1.18\%
+\]
+
+This indicates that Marketing Spend
+alone explains approximately
+\textbf{1.18\% of the variation}
+in Sales Amount.
+
+The low $R^2$ value suggests
+that the fitted regression model
+has very limited explanatory power.
+
+Predicted values and residuals
+were also considered to understand
+the difference between actual
+and estimated sales amounts.
+
+A residual is calculated as:
+
+\[
+e_i = y_i - \hat{y}_i
+\]
+
+where $y_i$ represents the actual
+Sales Amount and $\hat{y}_i$
+represents the predicted Sales Amount.
+
+% =====================================
+% PCA EVALUATION
+% =====================================
+
+\section{PCA Evaluation}
+
+Principal Component Analysis (PCA)
+was evaluated using the
+\textbf{explained variance ratio}.
+
+The explained variance ratio measures
+the proportion of total variance
+captured by each principal component.
+
+In this project, PCA was used
+to transform 10 selected numerical
+features into two principal
+components, PC1 and PC2.
+
+The combined explained variance
+of the two components is:
+
+\[
+EVR_{\text{total}} = EVR_1 + EVR_2
+\]
+
+The explained variance ratio
+was used to assess how much
+of the original standardized
+data variation was retained
+after dimensionality reduction.
+
+A scatter plot of PC1 and PC2
+was also created to visualize
+the distribution of transactions
+in the reduced two-dimensional
+feature space.
+
+% =====================================
+% HYPOTHESIS TEST EVALUATION
+% =====================================
+
+\section{Hypothesis Test Evaluation}
+
+A Two-Sample Z-Test was performed
+to compare the mean Sales Amount
+of Business and Retail customers.
+
+The test was evaluated using
+the Z-statistic and p-value.
+
+The following results were obtained:
+
+\begin{itemize}
+
+    \item \textbf{Z-Statistic:} 2.944
+
+    \item \textbf{P-Value:} 0.00324
+
+    \item \textbf{Significance Level:}
+    $\alpha = 0.05$
+
+\end{itemize}
+
+Since the p-value was smaller
+than the significance level,
+
+\[
+0.00324 < 0.05
+\]
+
+the null hypothesis was rejected.
+
+This indicates a statistically
+significant difference between
+the mean Sales Amount of Business
+and Retail customers in the
+given dataset, under the
+assumptions of the test.
+
+% =====================================
+% VISUAL EVALUATION
+% =====================================
+
+\section{Visual Evaluation}
+
+Data visualization techniques were
+used to examine distributions,
+relationships, and analytical
+results within the dataset.
+
+The following visualizations
+were considered:
+
+\begin{itemize}
+
+    \item \textbf{Histogram:}
+    Used to examine the frequency
+    distribution of Sales Amount.
+
+    \item \textbf{Box Plot:}
+    Used to observe the spread
+    of sales values and identify
+    potential outliers.
+
+    \item \textbf{Correlation Heat Map:}
+    Used to examine linear
+    relationships between
+    numerical attributes.
+
+    \item \textbf{PCA Scatter Plot:}
+    Used to visualize the
+    transformed dataset using
+    PC1 and PC2.
+
+    \item \textbf{Regression Plot:}
+    Used to visualize the
+    relationship between
+    Marketing Spend and Sales Amount
+    along with the fitted
+    regression line.
+
+\end{itemize}
+
+These visualizations supported
+the interpretation of statistical
+results and helped identify
+patterns in the dataset.
+
+% =====================================
+% OVERALL EVALUATION
+% =====================================
+
+\medskip
+
+\noindent\textbf{Overall Evaluation}
+
+The evaluation methods provided
+different perspectives on the
+techniques implemented in the
+Sales Insights project.
+
+The regression analysis showed
+that Marketing Spend alone
+explained only a small proportion
+of the variation in Sales Amount.
+
+The Z-test indicated a statistically
+significant difference in mean
+sales between Business and
+Retail customers.
+
+PCA provided a lower-dimensional
+representation of the numerical
+features, while the explained
+variance ratio served as a
+measure of information retention
+in terms of variance.
+
+Together, these evaluation
+methods helped us interpret
+the results of the statistical
+and machine learning techniques
+applied to the dataset.
+
+\endgroup
+
+
+
+% =====================================
+% RESULTS AND FINDINGS
+% =====================================
+
+\chapter{Results and Findings}
+
+\begingroup
+\fontsize{14}{21}\selectfont
+
+The analysis of the \textbf{Sales Insights}
+dataset provided findings related to
+sales distributions, customer segments,
+feature relationships, dimensionality
+reduction, and regression model performance.
+
+The results obtained from Exploratory
+Data Analysis (EDA), Feature Engineering,
+Principal Component Analysis (PCA),
+Hypothesis Testing, and Linear Regression
+are summarized below.
+
+% =====================================
+% EDA FINDINGS
+% =====================================
+
+\section{EDA Findings}
+
+Exploratory Data Analysis showed
+considerable variation in numerical
+attributes such as
+\texttt{Sales\_Amount},
+\texttt{Profit}, and
+\texttt{Quantity}.
+
+Some numerical variables showed
+right-skewed distributions and
+contained extreme observations.
+
+The histogram and box plot
+helped visualize the distribution
+and spread of sales amounts.
+
+The correlation heat map was
+used to examine relationships
+between numerical variables
+and identify possible
+linear associations.
+
+These visualizations provided
+a clearer understanding of
+the characteristics of the dataset.
+
+% =====================================
+% FEATURE EXTRACTION FINDINGS
+% =====================================
+
+\section{Feature Extraction Findings}
+
+Feature engineering was performed
+to derive additional attributes
+from the existing dataset.
+
+The following features were created:
+
+\begin{itemize}
+
+    \item \textbf{Average Price Per Item:}
+    Represents the average sales
+    value per unit purchased.
+
+    \item \textbf{Profit Percentage:}
+    Represents profit as a percentage
+    of the total sales amount.
+
+    \item \textbf{High Sales:}
+    Classifies transactions into
+    high-sales and low-sales
+    categories using the median
+    Sales Amount.
+
+\end{itemize}
+
+These features provided additional
+representations of transaction
+value, profitability, and
+sales performance.
+
+% =====================================
+% PCA FINDINGS
+% =====================================
+
+\section{PCA Findings}
+
+Principal Component Analysis (PCA)
+was applied to reduce the
+dimensionality of the selected
+numerical features.
+
+The original 10 numerical features
+were transformed into two
+principal components,
+\textbf{PC1 and PC2}.
+
+This transformation provided
+a two-dimensional representation
+of the sales transactions.
+
+A scatter plot of PC1 and PC2
+was used to visualize the
+distribution of observations
+in the reduced feature space.
+
+The explained variance ratio
+was calculated to assess
+the proportion of total
+variance retained by
+the principal components.
+
+% =====================================
+% HYPOTHESIS TESTING FINDINGS
+% =====================================
+
+\section{Hypothesis Testing Findings}
+
+A Two-Sample Z-Test was performed
+to compare the mean Sales Amount
+of Business and Retail customers.
+
+The following results were obtained:
+
+\begin{itemize}
+
+    \item \textbf{Business Customers:} 28
+
+    \item \textbf{Mean Sales (Business):}
+    INR 74,855.66
+
+    \item \textbf{Retail Customers:} 67
+
+    \item \textbf{Mean Sales (Retail):}
+    INR 37,617.20
+
+    \item \textbf{Z-Statistic:} 2.944
+
+    \item \textbf{P-Value:} 0.00324
+
+    \item \textbf{Significance Level:}
+    $\alpha = 0.05$
+
+\end{itemize}
+
+Since the p-value was smaller
+than the significance level,
+
+\[
+0.00324 < 0.05
+\]
+
+the null hypothesis was rejected.
+
+The test indicated a
+\textbf{statistically significant
+difference} between the mean
+sales amounts of Business
+and Retail customers.
+
+Business customers had a
+higher average Sales Amount
+than Retail customers
+in the observed dataset.
+
+% =====================================
+% LINEAR REGRESSION FINDINGS
+% =====================================
+
+\section{Linear Regression Findings}
+
+Simple Linear Regression was
+applied to examine the
+relationship between
+\texttt{Marketing\_Spend}
+and \texttt{Sales\_Amount}.
+
+The fitted regression equation was:
+
+\[
+\hat{Y} = 42947.9957 + 28.9598X
+\]
+
+where $X$ represents Marketing
+Spend and $\hat{Y}$ represents
+the predicted Sales Amount.
+
+The model produced an
+$R^2$ score of:
+
+\[
+R^2 = 0.0118
+\]
+
+This corresponds to:
+
+\[
+1.18\%
+\]
+
+The result indicates that
+Marketing Spend alone explained
+approximately 1.18\% of the
+variation in Sales Amount
+within the dataset.
+
+Therefore, the model showed
+a very weak linear relationship
+between Marketing Spend and
+Sales Amount.
+
+Marketing Spend alone was
+not a strong predictor of
+Sales Amount in the
+fitted regression model.
+
+% =====================================
+% OVERALL FINDINGS
+% =====================================
+
+\section{Overall Findings}
+
+The project demonstrated the
+application of different
+statistical and data science
+techniques to the Sales
+Insights dataset.
+
+Exploratory Data Analysis
+helped examine the distribution
+and relationships of
+numerical variables.
+
+Feature engineering provided
+additional attributes for
+representing transaction
+value and profitability.
+
+Principal Component Analysis
+reduced the selected numerical
+features into two principal
+components for visualization.
+
+The Two-Sample Z-Test indicated
+a statistically significant
+difference in average sales
+between Business and
+Retail customers.
+
+Linear Regression showed
+that Marketing Spend alone
+had limited ability to
+explain the variation
+in Sales Amount.
+
+Overall, the findings suggest
+that additional variables
+may be needed to better
+explain sales variation.
+
+The project also provided
+practical experience in
+applying statistical analysis,
+feature engineering,
+dimensionality reduction,
+and regression techniques
+to a structured dataset.
+
+\endgroup
+
+
+% =====================================
+% CONCLUSION
+% =====================================
+
+\chapter{Conclusion}
+
+\begingroup
+\fontsize{14}{21}\selectfont
+
+The \textbf{Sales Insights} project provided
+practical experience in applying various
+data analysis, statistical, and machine
+learning techniques to a structured
+sales transaction dataset.
+
+The project involved data preprocessing,
+feature engineering, Exploratory Data
+Analysis (EDA), Principal Component
+Analysis (PCA), statistical hypothesis
+testing using the Z-test, and
+Simple Linear Regression.
+
+Exploratory Data Analysis helped us
+understand the distribution of numerical
+variables, identify potential outliers,
+and examine relationships between
+different attributes using visualizations
+such as histograms, box plots, and
+correlation heat maps.
+
+Feature engineering was used to create
+additional variables, including
+\textbf{Average Price Per Item},
+\textbf{Profit Percentage}, and
+\textbf{High Sales}. These features
+provided alternative representations
+of transaction values, profitability,
+and sales performance.
+
+Principal Component Analysis was
+implemented to reduce 10 selected
+numerical features into two principal
+components, PC1 and PC2. This allowed
+the dataset to be represented and
+visualized in a two-dimensional space.
+
+The \textbf{Two-Sample Z-Test} was used
+to compare the average Sales Amount
+of Business and Retail customers.
+The obtained p-value of
+\textbf{0.00324} was smaller than
+the selected significance level
+of 0.05.
+
+Therefore, the null hypothesis
+was rejected, indicating a
+statistically significant difference
+between the mean sales amounts
+of the two customer groups,
+under the assumptions of the test.
+
+Simple Linear Regression was applied
+to examine the relationship between
+Marketing Spend and Sales Amount.
+The model produced an
+$R^2$ value of approximately
+\textbf{0.0118 (1.18\%)}.
+
+This indicates that Marketing Spend
+alone explained only a small
+proportion of the variation
+in Sales Amount within the dataset.
+Therefore, it was not a strong
+linear predictor of sales
+in the fitted model.
+
+Overall, the project helped us
+understand how different concepts
+from the Fundamentals of Data Science
+course can be implemented together
+within a single analytical workflow.
+
+As second-year B.Tech students
+specializing in Data Science,
+this project provided valuable
+experience in working with datasets,
+implementing statistical techniques,
+interpreting results, and
+collaborating as a team.
+
+Since the dataset was synthetically
+generated, the findings represent
+patterns within the simulated data
+and should not be interpreted
+as conclusions about an actual
+business or its customers.
+
+\endgroup
+
+\end{document}
